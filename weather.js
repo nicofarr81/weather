@@ -33,8 +33,10 @@ let handleWeatherResponse = function(response) {
   window.response = response
 
   // **** your code starts here - don't modify anything else. you will be sad.
-  $(".forecast").empty();
+  $("#current-conditions-icon").html(icon(response.currently));
+  $("#current-conditions-text").html(response.currently.summary);
 
+  $(".forecast").empty();
   let markup = "";
 
   for(let i=0;i<6;i++) {
@@ -45,6 +47,7 @@ let handleWeatherResponse = function(response) {
     markup += '</div>';
   }
 
+  $(".current").show(1000);
   $(".forecast").append(markup);
   $(".forecast").fadeIn(2000);
   // *** your code ends here - no, really.
